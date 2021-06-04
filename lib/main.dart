@@ -47,7 +47,62 @@ class MyApp extends StatelessWidget {
                   border: InputBorder.none,
                   hintText: "Please Enter Text!",
                 ),
-              )
+              ),
+              new Checkbox(
+                value: true,
+                onChanged: (bool value) {},
+              ),
+              new Radio(
+                value: 0,
+                groupValue: 0,
+                onChanged: (_) {},
+              ),
+              new Switch(
+                value: false,
+                onChanged: (_) {},
+              ),
+              new ButtonBar(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  new ElevatedButton(
+                    onPressed: () => {},
+                    child: const Text("Elevated"),
+                  ),
+                  new ElevatedButton(
+                    onPressed: null,
+                    child: const Text("Disabled"),
+                  ),
+                ],
+              ),
+              new ButtonBar(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  new TextButton(
+                    onPressed: () => {},
+                    child: const Text("Text"),
+                  ),
+                  new TextButton(
+                    onPressed: null,
+                    child: const Text("Disabled"),
+                  ),
+                ],
+              ),
+              new ButtonBar(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  new OutlinedButton(
+                    onPressed: () => {},
+                    child: const Text("Outlined"),
+                  ),
+                  new OutlinedButton(
+                    onPressed: null,
+                    child: const Text("Disabled"),
+                  ),
+                ],
+              ),
+              // new Image.network(
+              //   "https://i.gifer.com/138n.gif",
+              // ),
             ],
           ),
         ),
