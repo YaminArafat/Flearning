@@ -1,110 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:random_words/random_words.dart';
 
 void main() => runApp(new MyApp());
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
+    final noun = new WordNoun.random();
+    final adjective = new WordAdjective.random();
     return new MaterialApp(
-      title: 'Welcome to Flutter',
+      title: 'Word Game',
       home: new Scaffold(
         appBar: new AppBar(
-          title: new Text("Flutter Intro"),
-          leading: new Icon(Icons.alarm_on),
-          actions: [
-            new IconButton(
-              icon: new Icon(Icons.sports_football),
-              tooltip: 'Hello!',
-              onPressed: () => {},
-            ),
-            new IconButton(
-              icon: new Icon(Icons.cake_rounded),
-              onPressed: () => {},
-            ),
-          ],
+          title: new Text('Word Game'),
         ),
-        bottomNavigationBar: new BottomNavigationBar(items: [
-          new BottomNavigationBarItem(
-            icon: new Icon(Icons.account_balance),
-            label: 'Bank',
-          ),
-          new BottomNavigationBarItem(
-            icon: new Icon(Icons.badge),
-            label: 'Badge',
-          ),
-          new BottomNavigationBarItem(
-            icon: new Icon(Icons.money),
-            label: "BDT",
-          )
-        ]),
-        body: new Container(
-          padding: const EdgeInsets.all(20.0),
-          child: new Column(
-            children: [
-              new Text("Hello World"),
-              new TextField(
-                decoration: new InputDecoration(
-                  border: InputBorder.none,
-                  hintText: "Please Enter Text!",
-                ),
-              ),
-              new Checkbox(
-                value: true,
-                onChanged: (bool value) {},
-              ),
-              new Radio(
-                value: 0,
-                groupValue: 0,
-                onChanged: (_) {},
-              ),
-              new Switch(
-                value: false,
-                onChanged: (_) {},
-              ),
-              new ButtonBar(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  new ElevatedButton(
-                    onPressed: () => {},
-                    child: const Text("Elevated"),
-                  ),
-                  new ElevatedButton(
-                    onPressed: null,
-                    child: const Text("Disabled"),
-                  ),
-                ],
-              ),
-              new ButtonBar(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  new TextButton(
-                    onPressed: () => {},
-                    child: const Text("Text"),
-                  ),
-                  new TextButton(
-                    onPressed: null,
-                    child: const Text("Disabled"),
-                  ),
-                ],
-              ),
-              new ButtonBar(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  new OutlinedButton(
-                    onPressed: () => {},
-                    child: const Text("Outlined"),
-                  ),
-                  new OutlinedButton(
-                    onPressed: null,
-                    child: const Text("Disabled"),
-                  ),
-                ],
-              ),
-              // new Image.network(
-              //   "https://i.gifer.com/138n.gif",
-              // ),
-            ],
-          ),
+        body: new Center(
+          child: new Text("Word Noun: ${noun.asCapitalized}\n"
+              "Sentence: The programmer wrote a ${adjective.asCapitalized} app in Flutter and showed it to his ${noun.asCapitalized}"),
         ),
       ),
     );
@@ -112,11 +24,122 @@ class MyApp extends StatelessWidget {
 }
 
 
+/// basic
+// class MyApp extends StatelessWidget {
+//   @override
+//   Widget build(BuildContext context) {
+//     return new MaterialApp(
+//       title: 'Welcome to Flutter',
+//       home: new Scaffold(
+//         appBar: new AppBar(
+//           title: new Text("Flutter Intro"),
+//           leading: new Icon(Icons.alarm_on),
+//           actions: [
+//             new IconButton(
+//               icon: new Icon(Icons.sports_football),
+//               tooltip: 'Hello!',
+//               onPressed: () => {},
+//             ),
+//             new IconButton(
+//               icon: new Icon(Icons.cake_rounded),
+//               onPressed: () => {},
+//             ),
+//           ],
+//         ),
+//         bottomNavigationBar: new BottomNavigationBar(items: [
+//           new BottomNavigationBarItem(
+//             icon: new Icon(Icons.account_balance),
+//             label: 'Bank',
+//           ),
+//           new BottomNavigationBarItem(
+//             icon: new Icon(Icons.badge),
+//             label: 'Badge',
+//           ),
+//           new BottomNavigationBarItem(
+//             icon: new Icon(Icons.money),
+//             label: "BDT",
+//           )
+//         ]),
+//         body: new Container(
+//           padding: const EdgeInsets.all(20.0),
+//           child: new Column(
+//             children: [
+//               new Text("Hello World"),
+//               new TextField(
+//                 decoration: new InputDecoration(
+//                   border: InputBorder.none,
+//                   hintText: "Please Enter Text!",
+//                 ),
+//               ),
+//               new Checkbox(
+//                 value: true,
+//                 onChanged: (bool value) {},
+//               ),
+//               new Radio(
+//                 value: 0,
+//                 groupValue: 0,
+//                 onChanged: (_) {},
+//               ),
+//               new Switch(
+//                 value: false,
+//                 onChanged: (_) {},
+//               ),
+//               new ButtonBar(
+//                 mainAxisSize: MainAxisSize.min,
+//                 children: [
+//                   new ElevatedButton(
+//                     onPressed: () => {},
+//                     child: const Text("Elevated"),
+//                   ),
+//                   new ElevatedButton(
+//                     onPressed: null,
+//                     child: const Text("Disabled"),
+//                   ),
+//                 ],
+//               ),
+//               new ButtonBar(
+//                 mainAxisSize: MainAxisSize.min,
+//                 children: [
+//                   new TextButton(
+//                     onPressed: () => {},
+//                     child: const Text("Text"),
+//                   ),
+//                   new TextButton(
+//                     onPressed: null,
+//                     child: const Text("Disabled"),
+//                   ),
+//                 ],
+//               ),
+//               new ButtonBar(
+//                 mainAxisSize: MainAxisSize.min,
+//                 children: [
+//                   new OutlinedButton(
+//                     onPressed: () => {},
+//                     child: const Text("Outlined"),
+//                   ),
+//                   new OutlinedButton(
+//                     onPressed: null,
+//                     child: const Text("Disabled"),
+//                   ),
+//                 ],
+//               ),
+//               // new Image.network(
+//               //   "https://i.gifer.com/138n.gif",
+//               // ),
+//             ],
+//           ),
+//         ),
+//       ),
+//     );
+//   }
+// }
 
 
 
 
 
+
+///default template
 // import 'package:flutter/material.dart';
 
 // void main() {

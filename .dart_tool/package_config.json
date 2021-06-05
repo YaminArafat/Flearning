@@ -80,6 +80,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "random_words",
+      "rootUri": "file:///C:/Users/Yamin/AppData/Local/flutter/.pub-cache/hosted/pub.dartlang.org/random_words-1.0.2",
+      "packageUri": "lib/",
+      "languageVersion": "1.22"
+    },
+    {
       "name": "sky_engine",
       "rootUri": "file:///C:/Users/Yamin/AppData/Local/flutter/bin/cache/pkg/sky_engine",
       "packageUri": "lib/",
@@ -140,7 +146,7 @@
       "languageVersion": "2.7"
     }
   ],
-  "generated": "2021-03-26T16:54:11.563552Z",
+  "generated": "2021-06-05T22:49:38.094630Z",
   "generator": "pub",
   "generatorVersion": "2.12.2"
 }
