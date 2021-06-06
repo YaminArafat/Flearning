@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:random_words/random_words.dart';
 
@@ -6,22 +8,113 @@ void main() => runApp(new MyApp());
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final noun = new WordNoun.random();
-    final adjective = new WordAdjective.random();
     return new MaterialApp(
       title: 'Word Game',
-      home: new Scaffold(
-        appBar: new AppBar(
-          title: new Text('Word Game'),
-        ),
-        body: new Center(
-          child: new Text("Word Noun: ${noun.asCapitalized}\n"
-              "Sentence: The programmer wrote a ${adjective.asCapitalized} app in Flutter and showed it to his ${noun.asCapitalized}"),
-        ),
-      ),
+      home: new RandomSentences(),
     );
   }
 }
+
+class RandomSentences extends StatefulWidget {
+  @override
+  createState() => new RandomSentencesState();
+}
+
+class RandomSentencesState extends State<RandomSentences> {
+  final _sentences = <String>[];
+  final _funnies = new Set<String>();
+  final _biggerfont = const TextStyle(fontSize: 14.0);
+  @override
+  Widget build(BuildContext context) {
+    return new Scaffold(
+      appBar: new AppBar(
+        title: new Text("Word Game"),
+        actions: [
+          new IconButton(
+            icon: new Icon(Icons.list),
+            onPressed: _pushfunnies,
+          )
+        ],
+      ),
+      body: _buildSentences(),
+    );
+  }
+
+  void _pushfunnies() {
+    Navigator.of(context).push(
+      new MaterialPageRoute(builder: (context) {
+        final tiles = _funnies.map(
+          (sentence) {
+            return new ListTile(
+              title: new Text(
+                sentence,
+                style: _biggerfont,
+              ),
+            );
+          },
+        );
+        final divided = ListTile.divideTiles(
+          context: context,
+          tiles: tiles,
+        ).toList();
+        return new Scaffold(
+          appBar: new AppBar(
+            title: new Text('Svaed Funny Snetences'),
+          ),
+          body: new ListView(children: divided),
+        );
+      }),
+    );
+  }
+
+  String _getSentence() {
+    final noun = new WordNoun.random();
+    final adjective = new WordAdjective.random();
+    return "Word Noun: ${noun.asCapitalized}\n"
+        "Sentence: The programmer wrote a ${adjective.asCapitalized} app in Flutter and showed it to his ${noun.asCapitalized}";
+  }
+
+  Widget _buildRow(String sentence) {
+    final alreadyFoundfunny = _funnies.contains(sentence);
+
+    return new ListTile(
+      title: new Text(
+        sentence,
+        style: _biggerfont,
+      ),
+      trailing: new Icon(
+        alreadyFoundfunny ? Icons.thumb_up : Icons.thumb_down,
+        color: alreadyFoundfunny ? Colors.green : null,
+      ),
+      onTap: () {
+        setState(() {
+          if (alreadyFoundfunny) {
+            _funnies.remove(sentence);
+          } else {
+            _funnies.add(sentence);
+          }
+        });
+      },
+    );
+  }
+
+  Widget _buildSentences() {
+    return new ListView.builder(
+      padding: const EdgeInsets.all(16.0),
+      itemBuilder: (context, i) {
+        if (i.isOdd) return new Divider();
+        final index = i ~/ 2;
+        if (index >= _sentences.length) {
+          for (int x = 0; x < 1; x++) {
+            _sentences.add(_getSentence());
+          }
+        }
+        return _buildRow(_sentences[index]);
+      },
+    );
+  }
+}
+
 
 
 /// basic
