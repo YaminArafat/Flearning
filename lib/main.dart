@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_helloworld/ui/word_game.dart';
+import 'package:flutter_application_helloworld/ui/cat_list.dart';
 
 void main() async {
   runApp(new MyApp());
@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         accentColor: Colors.pinkAccent,
       ),
-      home: new word_game(),
+      home: new CatList(),
     );
   }
 }
