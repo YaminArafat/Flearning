@@ -4,9 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:random_words/random_words.dart';
 
 /// word game 6/6/21
-void main() => runApp(new word_game());
+void main() => runApp(new WordGame());
 
-class word_game extends StatelessWidget {
+class WordGame extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new MaterialApp(

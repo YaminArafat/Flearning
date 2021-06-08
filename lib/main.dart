@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_helloworld/ui/cat_list.dart';
+import 'package:flutter_learning/ui/cat_list.dart';
 
 void main() async {
-  runApp(new MyApp());
+  runApp(new CatApp());
 }
 
-class MyApp extends StatelessWidget {
+class CatApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return new MaterialApp(
-      theme: ThemeData(
+      theme: new ThemeData(
         primarySwatch: Colors.blue,
         accentColor: Colors.pinkAccent,
+        fontFamily: 'Ubuntu',
       ),
       home: new CatList(),
     );
