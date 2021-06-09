@@ -22,7 +22,7 @@ class Cat {
     @required this.pictures,
     @required this.cattributes,
   });
-  String toString() {
-    return "Cat $externalID is named $name.";
-  }
+  // String toString() {
+  //   return "Cat $externalID is named $name.";
+  // }
 }

@@ -15,6 +15,6 @@ class CatDetailsFooterState extends State<CatDetailsFooter>
     with TickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
-    //TODO
+    //
   }
 }

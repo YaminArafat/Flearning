@@ -17,6 +17,90 @@ class CatDetailsHeader extends StatefulWidget {
 class CatDetailsHeaderState extends State<CatDetailsHeader> {
   @override
   Widget build(BuildContext context) {
-    //TODO
+    var theme = Theme.of(context);
+    var textTheme = theme.textTheme;
+
+    var avatar = new Hero(
+      tag: widget.avatarTag,
+      child: new CircleAvatar(
+        backgroundImage: new NetworkImage(widget.cat.avatarURL),
+        radius: 75.0,
+      ),
+    );
+    var likeinfo = new Padding(
+      padding: const EdgeInsets.only(top: 16.0),
+      child: new Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          new Icon(
+            Icons.thumb_up,
+            color: Colors.white,
+            size: 16.0,
+          ),
+          new Padding(
+            padding: const EdgeInsets.only(left: 8.0),
+            child: new Text(
+              widget.cat.likecount.toString(),
+              style: textTheme.subtitle1.copyWith(color: Colors.white),
+            ),
+          ),
+        ],
+      ),
+    );
+
+    var actionButtons = new Padding(
+      padding: const EdgeInsets.only(
+        top: 16.0,
+        left: 16.0,
+        right: 16.0,
+      ),
+      child: new Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          new ClipRRect(
+            borderRadius: new BorderRadius.circular(30.0),
+            child: new MaterialButton(
+              minWidth: 140.0,
+              color: Colors.green, //theme.accentColor,
+              textColor: Colors.white,
+              onPressed: () async => {},
+              child: new Text("Adopt Me"),
+            ),
+          ),
+          new ClipRRect(
+            borderRadius: new BorderRadius.circular(30.0),
+            child: new MaterialButton(
+              minWidth: 140.0,
+              color: Colors.blue,
+              textColor: Colors.white,
+              onPressed: () async => {},
+              child: new Text("Like"),
+            ),
+          ),
+        ],
+      ),
+    );
+    return new Stack(
+      children: [
+        new Align(
+          alignment: FractionalOffset.bottomCenter,
+          heightFactor: 1.4,
+          child: new Column(
+            children: [
+              avatar,
+              likeinfo,
+              actionButtons,
+            ],
+          ),
+        ),
+        new Positioned(
+          top: 26.0,
+          left: 5.0,
+          child: new BackButton(
+            color: Colors.white,
+          ),
+        ),
+      ],
+    );
   }
 }

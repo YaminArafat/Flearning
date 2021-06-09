@@ -1,5 +1,6 @@
 import 'package:flutter_learning/models/cat.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_learning/ui/cat_details/header/details_header.dart';
 import 'package:meta/meta.dart';
 
 class CatDetailsPage extends StatefulWidget {
@@ -16,13 +17,33 @@ class CatDetailsPage extends StatefulWidget {
 }
 
 class CatDetailsPageState extends State<CatDetailsPage> {
+  var linearGradient = new BoxDecoration(
+    gradient: new LinearGradient(
+      begin: FractionalOffset.bottomLeft,
+      end: FractionalOffset.centerRight,
+      colors: [
+        Colors.purple,
+        Colors.pink,
+      ],
+    ),
+  );
+
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
       body: new SingleChildScrollView(
         child: new Container(
+          decoration: linearGradient,
           child: new Column(
             crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              new CatDetailsHeader(
+                widget.cat,
+                avatarTag: widget.avatarTag,
+              ),
+              //body
+              //footer
+            ],
           ),
         ),
       ),
