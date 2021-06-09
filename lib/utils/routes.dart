@@ -12,6 +12,9 @@ class FadePageRoute<T> extends MaterialPageRoute<T> {
     if (settings.name != null) {
       return child;
     }
-    return new FadeTransition(opacity: animation, child: child);
+    return new FadeTransition(
+      opacity: animation,
+      child: child,
+    );
   }
 }

@@ -16,5 +16,7 @@ class CatDetailsHeader extends StatefulWidget {
 
 class CatDetailsHeaderState extends State<CatDetailsHeader> {
   @override
-  Widget build(BuildContext context) {}
+  Widget build(BuildContext context) {
+    //TODO
+  }
 }
