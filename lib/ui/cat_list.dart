@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_learning/models/cat.dart';
 import 'package:flutter_learning/services/api.dart';
+import 'package:flutter_learning/ui/cat_details/details_page.dart';
+import 'package:flutter_learning/utils/routes.dart';
 
 class CatList extends StatefulWidget {
   @override
@@ -9,10 +11,10 @@ class CatList extends StatefulWidget {
 
 class _CatListState extends State<CatList> {
   List<Cat> _cats = [];
-  // void initState() {
-  //   super.initState();
-  //   _loadCats();
-  // }
+  void initState() {
+    super.initState();
+    _loadCats();
+  }
 
   _loadCats() async {
     String fileData =
@@ -24,6 +26,15 @@ class _CatListState extends State<CatList> {
     setState(() {
       _cats = CatAPI.allCatsFromJson(fileData);
     });
+  }
+
+  navigateToCatDetails(Cat cat, Object avatarTag) {
+    Navigator.of(context).push(new FadePageRoute(
+      builder: (c) {
+        return new CatDetailsPage(cat, avatarTag: avatarTag);
+      },
+      settings: new RouteSettings(),
+    ));
   }
 
   Widget _getAppTitle() {
@@ -52,6 +63,7 @@ class _CatListState extends State<CatList> {
           mainAxisSize: MainAxisSize.min,
           children: [
             new ListTile(
+              onTap: () => navigateToCatDetails(cat, index),
               leading: new Hero(
                 tag: index,
                 child: new CircleAvatar(
