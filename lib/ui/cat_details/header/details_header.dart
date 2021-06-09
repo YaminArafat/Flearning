@@ -1,6 +1,7 @@
 import 'package:flutter_learning/models/cat.dart';
 import 'package:flutter/material.dart';
 import 'package:meta/meta.dart';
+import 'package:flutter_learning/ui/cat_details/header/header_bg_img.dart';
 
 class CatDetailsHeader extends StatefulWidget {
   final Cat cat;
@@ -15,10 +16,22 @@ class CatDetailsHeader extends StatefulWidget {
 }
 
 class CatDetailsHeaderState extends State<CatDetailsHeader> {
+  static const BG_IMG = 'images/bgIMG.jpeg';
+
   @override
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
     var textTheme = theme.textTheme;
+    var screenWidth = MediaQuery.of(context).size.width;
+    var diagonalCutBG = new DiagonallyCutBG(
+      new Image.asset(
+        BG_IMG,
+        width: screenWidth,
+        height: 280.0,
+        fit: BoxFit.cover,
+      ),
+      color: const Color(0xBB42A5F5),
+    );
 
     var avatar = new Hero(
       tag: widget.avatarTag,
@@ -82,6 +95,7 @@ class CatDetailsHeaderState extends State<CatDetailsHeader> {
     );
     return new Stack(
       children: [
+        diagonalCutBG,
         new Align(
           alignment: FractionalOffset.bottomCenter,
           heightFactor: 1.4,
