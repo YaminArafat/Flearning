@@ -12,7 +12,7 @@ class CatDetailsBody extends StatelessWidget {
     return new Padding(
       padding: const EdgeInsets.only(
         top: 16.0,
-        right: 10.0,
+        left: 10.0,
       ),
       child: new CircleAvatar(
         backgroundColor: color,

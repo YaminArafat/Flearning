@@ -1,6 +1,7 @@
 import 'package:flutter_learning/models/cat.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_learning/ui/cat_details/details_body.dart';
+import 'package:flutter_learning/ui/cat_details/footer/details_footer.dart';
 import 'package:flutter_learning/ui/cat_details/header/details_header.dart';
 import 'package:meta/meta.dart';
 
@@ -43,12 +44,24 @@ class CatDetailsPageState extends State<CatDetailsPage> {
                 avatarTag: widget.avatarTag,
               ),
               new Padding(
-                padding: const EdgeInsets.all(25.0),
+                padding: const EdgeInsets.only(
+                  top: 25.0,
+                  left: 25.0,
+                  right: 25.0,
+                ),
                 child: new CatDetailsBody(
                   widget.cat,
                 ),
               ),
-              //footer
+              new Padding(
+                padding: const EdgeInsets.only(
+                  left: 16.0,
+                  right: 16.0,
+                ),
+                child: new CatDetailsFooter(
+                  widget.cat,
+                ),
+              ),
             ],
           ),
         ),
