@@ -14,7 +14,7 @@ class CatAPI {
       name: map['name'],
       description: map['description'],
       avatarURL: map['image_url'],
-      loaction: map['loaction'],
+      location: map['location'],
       likecount: map['like_counter'],
       isAdopted: map['adopted'],
       pictures: new List<String>.from(map['pictures']),

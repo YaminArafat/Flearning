@@ -5,7 +5,7 @@ class Cat {
   final String name;
   final String description;
   final String avatarURL;
-  final String loaction;
+  final String location;
   final int likecount;
   final bool isAdopted;
   final List<String> pictures;
@@ -16,7 +16,7 @@ class Cat {
     @required this.name,
     @required this.description,
     @required this.avatarURL,
-    @required this.loaction,
+    @required this.location,
     @required this.likecount,
     @required this.isAdopted,
     @required this.pictures,
